@@ -8,10 +8,10 @@
 </head>
 <body>
     <div class="wrapper">
-        <h1> Weather App</h1>
+        <h1>Weather App</h1>
 
         <div class="Tab-container">
-            <p class="tab" data-userWeather> Your Weather</p>
+            <p class="tab" data-userWeather>Your Weather</p>
             <p class="tab" data-searchWeather>Search Weather</p>
         </div>
 
@@ -53,35 +53,27 @@
                 <!-- 3 cards - parameters -->
                 <div class="parameter-container">
                     <!-- card 1 -->
-                    <div class="parameter"></div>
+                    <div class="parameter">
+                        <img src="assets/wind.png" alt="">
+                        <p>windspeed</p>
+                        <p data-windspeed></p>
+                    </div>
+                    <!-- card 2 -->
+                    <div class="parameter">
+                        <img src="assets/humidity.png" alt="">
+                        <p>humidity</p>
+                        <p data-humidity></p>
+                    </div>
+                    <!-- card 3 -->
+                    <div class="parameter">
+                        <img src="assets/cloud.png" alt="">
+                        <p>Clouds</p>
+                        <p data-cloudiness></p>
+                    </div>
                 </div>
-
-            </div>
-        </div>
-
-
-        <div class="weather-condition">Haze</div>
-        <div class="weather-condition-img"></div>
-        <div class="temperature">25.08 C</div>
-        <div>
-            <div>
-                <img src="" alt="">
-                <p>WINDSPEED</p>
-                <p>1.54m/s</p>
-            </div>
-            <div>
-                <img src="" alt="">
-                <p>HUMIDITY</p>
-                <p>50%</p>
-            </div>
-            <div>
-                <img src="" alt="">
-                <p>CLOUDS</p>
-                <p>0%</p>
             </div>
         </div>
     </div>
-    
     <script src="index.js"></script>
 </body>
 </html>

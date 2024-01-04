@@ -1,3 +1,8 @@
+const userTab = document.querySelector("[data-userWeather]");
+const searchTab = document.querySelector("[data-searchWeather]");
+const myLocationContainer = document.querySelector(".grant-location-container");
+const searchWeatherContainer = document.querySelector(".form-container");
+
 const API_KEY = '47651989315605f6e10456f3972eec9e';
 
 function renderWeatherInformation(data){
