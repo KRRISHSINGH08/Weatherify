@@ -10,6 +10,7 @@ const userInfoContainer = document.querySelector(".user-info-container");
 let currentTab = userTab;
 const API_KEY = '47651989315605f6e10456f3972eec9e';
 currentTab.classList.add("current-tab");
+getfromSessionStorage();
 
 function switchTab(clickedtab) {
     if(currentTab != clickedtab) {
@@ -51,7 +52,7 @@ function getfromSessionStorage() {
     }
 }
 
-async function fetchWeatherInfo(coorinates) {
+async function fetchWeatherInfo(coordinates) {
     const {lat, lon} = coordinates;
     grantAccessContainer.classList.remove("active");
     // make loader visible
@@ -82,15 +83,38 @@ function renderWeatherInfo(data) {
     const Humidity = document.querySelector("[data-humidity]");
     const cloud= document.querySelector("[data-cloudiness]");
 
-    cityName.textContent = data.name;
-    countryIcon.textContent = data;
-    weatherDescription.textContent = data.weather.description;
-    weatherIcon.textContent = data.weather.icon;
-    temperature.textContent = data.main.temp;
-    windSpeed.textContent = data.wind.speed;
-    Humidity.textContent = data.main.humidity;
-    cloud.textContent = data.clouds.all;
+    cityName.innerText = data?.name;
+    countryIcon.src = `https://flagcdn.com/144x108/${data?.sys?.country.toLowerCase()}.png`;
+    weatherDescription.innerText = data?.weather?.[0]?.description;
+    weatherIcon.innerText = `http://openweathermap.org.img/w/${data?.weather?.[0]?.icon}.png`;
+    temperature.innerText = data?.main?.temp;
+    windSpeed.innerText = data?.wind?.speed;
+    Humidity.innerText = data?.main?.humidity;
+    cloud.innerText = data?.clouds?.all;
 }
+
+
+
+function getLocation(){
+    if(navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(showPosition);
+    }
+    else{
+        console.log("No geoLocation Support");
+    }
+}
+
+function showPosition(position){
+    const userCoordinates = {
+    lat: position.coords.latitude,
+    long: position.coords.longitude,
+    }
+    sessionStorage.setItem("userCoordinates", JSON.stringify(userCoordinates));
+    fetchWeatherInfo(userCoordinates);
+}
+
+const grantAccessButton = document.querySelector("[data-grantAccess");
+grantAccessButton.addEventListener("click", getLocation);
 
 // || HOW TO API? || 
 /*
