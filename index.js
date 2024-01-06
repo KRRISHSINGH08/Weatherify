@@ -73,7 +73,23 @@ async function fetchWeatherInfo(coorinates) {
 }
 
 function renderWeatherInfo(data) {
-    
+    const cityName = document.querySelector("[data-cityName]");
+    const countryIcon = document.querySelector("[data-countryIcon]");
+    const weatherDescription = document.querySelector("[data-weatherDesc]");
+    const weatherIcon = document.querySelector("[data-weatherIcon]");
+    const temperature = document.querySelector("[data-temp]");
+    const windSpeed = document.querySelector("[data-windspeed]");
+    const Humidity = document.querySelector("[data-humidity]");
+    const cloud= document.querySelector("[data-cloudiness]");
+
+    cityName.textContent = data.name;
+    countryIcon.textContent = data;
+    weatherDescription.textContent = data.weather.description;
+    weatherIcon.textContent = data.weather.icon;
+    temperature.textContent = data.main.temp;
+    windSpeed.textContent = data.wind.speed;
+    Humidity.textContent = data.main.humidity;
+    cloud.textContent = data.clouds.all;
 }
 
 // || HOW TO API? || 
